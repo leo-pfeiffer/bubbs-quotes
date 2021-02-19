@@ -1,0 +1,22 @@
+{
+  "name": "bubbs-quotes",
+  "version": "1.0.0",
+  "description": "REST API for quotes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leo-pfeiffer/bubbs-quotes.git"
+  },
+  "author": "leo-pfeiffer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leo-pfeiffer/bubbs-quotes/issues"
+  },
+  "homepage": "https://github.com/leo-pfeiffer/bubbs-quotes#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
