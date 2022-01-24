@@ -1,6 +1,6 @@
 require('dotenv').config()
 const {MongoClient} = require('mongodb');
-const seedrandom = require("seedrandom")
+const {getRandomIndex, getDailySeed} = require('../utils/utils')
 
 const database = process.env.DATABASE;
 const user = process.env.DBUSER;
@@ -46,17 +46,6 @@ const getDailyQuote = async function() {
     } catch (e) {
         console.error(e);
     }
-}
-
-const getDailySeed = function() {
-    const date = new Date()
-    const seed = '' + date.getDate() + '' + date.getMonth() + '' + date.getFullYear()
-    const rng = seedrandom(seed)
-    return rng()
-}
-
-const getRandomIndex = function(length, rnd) {
-    return parseInt(length * rnd);
 }
 
 module.exports = {
