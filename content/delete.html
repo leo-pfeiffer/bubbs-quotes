@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+</head>
+<body>
+<h1>Delete quote</h1>
+<form id="quote-form" method="post">
+    <label for="quote">Quote:</label>
+    <input type="text" id="quote" name="quote" placeholder="Quote">
+    <input type="submit" value="Submit">
+</form>
+
+<table id="quote-table">
+    <tbody></tbody>
+    <tr>
+        <th>ID</th>
+        <th>Quote</th>
+    </tr>
+</table>
+
+</body>
+
+<script>
+    fetch('/all')
+        .then(res => res.json())
+        .then(res => {
+            const table = document.getElementById('quote-table')
+            for (let quote of res.quotes) {
+                const tr = document.createElement('tr')
+                const td1 = document.createElement('td')
+                td1.innerText = quote._id
+                const td2 = document.createElement('td')
+                td2.innerText = quote.quote
+                tr.appendChild(td1)
+                tr.appendChild(td2)
+                table.appendChild(tr)
+            }
+        })
+        .catch(err => console.log(err))
+</script>
+
+</html>

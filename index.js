@@ -1,17 +1,21 @@
 const express = require('express')
-const menu = require('./routes/menu')
 const quote = require('./routes/quote')
 const daily = require('./routes/daily')
 const name = require('./routes/name')
+const add = require('./routes/add')
+const del = require('./routes/delete')
+const all = require('./routes/all')
 const cors = require('cors')
 
 const app = express()
 app.use(cors())
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
-app.use('/menu', menu)
+app.use('/all', all)
 app.use('/quote', quote)
 app.use('/name', name)
 app.use('/daily', daily)
+app.use('/add', add)
+app.use('/delete', del)
 
 module.exports = app
