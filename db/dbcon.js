@@ -5,8 +5,10 @@ const {getRandomIndex, getDailySeed} = require('../utils/utils')
 const database = process.env.DATABASE;
 const user = process.env.DBUSER;
 const password = process.env.DBPASSWORD;
+const db_ip = process.env.DBIP;
 
-const uri = `mongodb+srv://${user}:${password}@playground.eqgtb.mongodb.net/${database}?retryWrites=true&w=majority&`;
+// const uri = `mongodb+srv://${user}:${password}@playground.eqgtb.mongodb.net/${database}?retryWrites=true&w=majority&`;
+const uri = `mongodb://${user}:${password}@${db_ip}:27017/${database}?directConnection=true`
 
 const getQuoteFromDb = async function() {
     try {
