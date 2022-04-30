@@ -1,0 +1,23 @@
+# Test your FastAPI endpoints
+
+GET http://127.0.0.1:8000/
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/hello/User
+Accept: application/json
+
+###
+
+POST http://localhost:8000/quote/add
+Content-Type: application/json
+
+{"quote":"myquote"}
+
+###
+
+POST http://localhost:8000/quote/delete
+Content-Type: application/json
+
+{"quote_id":42}
