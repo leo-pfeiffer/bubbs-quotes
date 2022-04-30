@@ -30,11 +30,6 @@ async def root():
     return {"message": "Hello World"}
 
 
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
-
-
 @app.get("/quote/random")
 async def quote_random():
     quote = await dao.get_random_quote()
