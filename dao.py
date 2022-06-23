@@ -31,9 +31,8 @@ class DataAccess:
         return objects
 
     async def get_random_quote(self) -> dict:
-        res = await self.collection.aggregate([{'$sample': {'size': 1}}])\
-            .to_list(1)
-        return self._unnest_object_id(res)[0]
+        res = await self.collection.aggregate([{'$sample': {'size': 1}}]).to_list(1)
+        return self._unnest_object_id(res[0])
 
     async def get_daily_quote(self) -> dict:
         cursor = await self.collection.find({}, {'_id': 1}).to_list(1000)
@@ -47,8 +46,7 @@ class DataAccess:
         return self._unnest_object_id(today)
 
     async def get_all_quotes(self) -> list[dict]:
-        cursor = await self.collection.find({}, {'_id': 1, 'quote': 1})\
-            .to_list(1000)
+        cursor = await self.collection.find({}, {'_id': 1, 'quote': 1}).to_list(1000)
         return self._unnest_object_ids(cursor)
 
     async def insert_new_quote(self, quote) -> None:
