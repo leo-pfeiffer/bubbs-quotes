@@ -16,7 +16,7 @@ if [[ "$ENV_SET" == "" ]]
     exit 1
 fi
 
-mongosh --authenticationDatabase "admin" -u "admin" -p <<EOF
+mongosh --authenticationDatabase "admin" -u "admin" -p "$1" <<EOF
   use bubbs_quotes;
   if (db.getUsers({filter: {'user': "$DBUSER"}}).users.length != 0) {
     db.dropUser("$DBUSER")
