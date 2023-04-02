@@ -17,7 +17,7 @@ class DataAccess:
         password = os.getenv('DBPASSWORD')
         db_ip = os.getenv('DBIP')
         collection = os.getenv('DBCOLLECTION')
-        url = f'mongodb://{user}:{password}@{db_ip}:27017/'
+        url = f'mongodb://{user}:{password}@{db_ip}:27017/{database}'
         logger.info(f"Trying to connect to mongo db {url}...")
         self.client = AsyncIOMotorClient(url)
         self.db = self.client[database]
