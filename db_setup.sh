@@ -29,3 +29,5 @@ mongosh <<EOF
     }
   );
 EOF
+
+mongoimport --db $DATABASE --collection $DBCOLLECTION --drop --file resources/data.json --jsonArray

@@ -56,7 +56,8 @@ class DataAccess:
     async def delete_quote(self, quote_id) -> None:
         self.collection.delete_one({'_id': ObjectId(quote_id)})
 
-    def get_daily_name(self) -> str:
+    @staticmethod
+    def get_daily_name() -> str:
         names = ['Lelo', 'Bubby', 'Leo', 'Your Bubby']
         rnd = get_daily_rand()
         idx = get_random_index(len(names), rnd)
