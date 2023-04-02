@@ -3,8 +3,11 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 import os
 from utils import get_daily_rand, get_random_index
+from logging import getLogger
 
 load_dotenv()
+
+logger = getLogger(__name__)
 
 
 class DataAccess:
@@ -15,6 +18,7 @@ class DataAccess:
         db_ip = os.getenv('DBIP')
         collection = os.getenv('DBCOLLECTION')
         url = f'mongodb://{user}:{password}@{db_ip}:27017/'
+        logger.info(f"Trying to connect to mongo db {url}...")
         self.client = AsyncIOMotorClient(url)
         self.db = self.client[database]
         self.collection = self.db[collection]
