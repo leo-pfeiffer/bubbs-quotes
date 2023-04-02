@@ -1,5 +1,6 @@
 #!/bin/bash
 # Setup script to run the
+# Usage: "bash db_setup.sh <admin-password>"
 
 # export env variables
 
