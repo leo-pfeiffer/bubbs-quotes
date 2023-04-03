@@ -31,4 +31,4 @@ mongosh --authenticationDatabase "admin" -u "admin" -p "$1" <<EOF
   );
 EOF
 
-mongoimport --db $MONGO_DATABASE --collection $MONGO_COLLECTION --drop --file resources/data.json --jsonArray
+mongoimport --authenticationDatabase "admin" -u "admin" -p "$1" --db $MONGO_DATABASE --collection $MONGO_COLLECTION --drop --file resources/data.json --jsonArray
