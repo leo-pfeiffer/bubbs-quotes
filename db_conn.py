@@ -8,7 +8,7 @@ load_dotenv()
 
 
 class _DatabaseConnection:
-    DATABASE = os.getenv('MONGO_DB')
+    DATABASE = os.getenv('MONGO_DATABASE')
     USER = os.getenv('MONGO_USER')
     PASSWORD = os.getenv('MONGO_PASSWORD')
     HOST = os.getenv('MONGO_HOST')
