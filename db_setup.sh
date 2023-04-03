@@ -1,6 +1,6 @@
 #!/bin/bash
 # Setup script to run the
-# Usage: "bash db_setup.sh <admin-password>"
+# Usage: "bash db_setup.sh <mongo-admin-password>"
 
 # export env variables
 
@@ -18,17 +18,17 @@ if [[ "$ENV_SET" == "" ]]
 fi
 
 mongosh --authenticationDatabase "admin" -u "admin" -p "$1" <<EOF
-  use bubbs_quotes;
-  if (db.getUsers({filter: {'user': "$DBUSER"}}).users.length != 0) {
-    db.dropUser("$DBUSER")
+  use $MONGO_DATABASE;
+  if (db.getUsers({filter: {'user': "$MONGO_USER"}}).users.length != 0) {
+    db.dropUser("$MONGO_USER")
   };
   db.createUser(
     {
-      user: "$DBUSER",
-      pwd: "$DBPASSWORD",
-      roles: [ { role: "readWrite", db: "$DATABASE" } ]
+      user: "$MONGO_USER",
+      pwd: "$MONGO_PASSWORD",
+      roles: [ { role: "readWrite", db: "$MONGO_DATABASE" } ]
     }
   );
 EOF
 
-mongoimport --db $DATABASE --collection $DBCOLLECTION --drop --file resources/data.json --jsonArray
+mongoimport --db $MONGO_DATABASE --collection $MONGO_COLLECTION --drop --file resources/data.json --jsonArray
